@@ -1,8 +1,9 @@
 ## Inbox4us - Technical Test Requirements for Odoo Hotel Booking Module
 ### Overview
-The candidate is required to complete a custom Odoo module for managing hotel bookings. This module includes room management, booking management, and customer management. Additionally, they need to implement a REST API for authentication and booking management using JWT.
-
-Extra points will be given for handling booking statuses and adding parameter validation using decorators.
+- Odoo version 17.0
+- Postman collection for testing the API: [Postman collection] (https://github.com/duchuykg/inbox4us.odoo.technical-test/blob/main/Odoo17.postman_collection.json)
+- Document Each Function: Provide documentation for each function, explaining its purpose, parameters, and return values.
+[API Document] (https://documenter.getpostman.com/view/26645840/2sA3QwcA8g)
 
 ### Instructions
 - Fork the Repository: Fork the provided repository to your personal GitHub account.
