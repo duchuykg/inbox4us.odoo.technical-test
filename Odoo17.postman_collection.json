@@ -1,0 +1,954 @@
+{
+	"info": {
+		"_postman_id": "43df62af-fc27-43b9-81dd-e52ca876b1f3",
+		"name": "Odoo17",
+		"description": "This module includes room management, booking management, and customer management.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26645840"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\", \n    \"email\": \"john@example.com\", \n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{url1}}/api/auth/register",
+							"host": [
+								"{{url1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "1. Purpose: Registers a new user in the system.\n2. Parameters:\n    - `name` (string): The user's full name.\n    - `email` (string): The user's email address.\n    - `password` (string): The user's password.\n3. Return:\n    - On success, the API should return a response indicating that the user was successfully registered.\n    - On failure, the API should return an error message with an appropriate HTTP status code (e.g., 400 for user already exists)."
+					},
+					"response": [
+						{
+							"name": "register_success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\", \n    \"email\": \"john@example.com\", \n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/register",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "cids=; Expires=Mon, 02 Jun 2025 12:51:19 GMT; Max-Age=0; Path=/"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "session_id=1b1298751fdc31587940e39420e260b2e4498ff2; Expires=Mon, 02 Jun 2025 12:51:19 GMT; Max-Age=604800; HttpOnly; Path=/"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 12:51:19 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"message\": \"Registration successful!\"\n        },\n        201\n    ]\n}"
+						},
+						{
+							"name": "register_error_exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\", \n    \"email\": \"john@example.com\", \n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/register",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 12:24:03 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"User already exists!\"\n        },\n        400\n    ]\n}"
+						},
+						{
+							"name": "register_error_miss_param",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\", \n    \"email\": \"john@example.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/register",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 14:02:08 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Missing required parameter: password\"\n        },\n        400\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"email\": \"john@example.com\",\n        \"password\": \"password\"\n    }"
+						},
+						"url": {
+							"raw": "{{url1}}/api/auth/login",
+							"host": [
+								"{{url1}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "- Purpose: Authenticates a user and returns an authentication token.\n    \n- Parameters:\n    \n    - `email` (string): The user's email address.\n        \n    - `password` (string): The user's password.\n        \n- Return:\n    \n    - On success, the API should return an authentication token (JWT token) that can be used for subsequent authenticated requests.\n        \n    - On failure, the API should return an error message with an appropriate HTTP status code (e.g., 401 for \"invalid username or password\")."
+					},
+					"response": [
+						{
+							"name": "login_success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"email\": \"john@example.com\",\n        \"password\": \"password\"\n    }"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/login",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "session_id=a87c0cdf35676cb0d0c0b05de71725b32dc632a7; Expires=Mon, 02 Jun 2025 12:42:35 GMT; Max-Age=604800; HttpOnly; Path=/"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 12:42:35 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.mfro2BhpOaZknDFELWWg8g91DWu6Vy14q5wbZAT14eQ\",\n            \"message\": \"Login successful\"\n        },\n        200\n    ]\n}"
+						},
+						{
+							"name": "login_error_invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"email\": \"john@example.com\",\n        \"password\": \"password1\"\n    }"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/login",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 12:12:24 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Access Denied\"\n        },\n        401\n    ]\n}"
+						},
+						{
+							"name": "login_error_miss_param",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"email\": \"john@example.com\"\n    }"
+								},
+								"url": {
+									"raw": "{{url1}}/api/auth/login",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 14:03:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Missing required parameter: password\"\n        },\n        400\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "#### REST API for Authentication using JWT"
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNzE3NDI0NTUyfQ.Wc08CGZjWDIBFo-W6yngfwObqhjhGwYFQ02w4oLIbrQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "--header 'Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+								"disabled": true
+							},
+							{
+								"key": "room_id",
+								"value": "1,"
+							},
+							{
+								"key": "customer_id",
+								"value": "1,"
+							},
+							{
+								"key": "checkin_date",
+								"value": "2022-01-01,"
+							},
+							{
+								"key": "checkout_date",
+								"value": "2022-01-05"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"room_id\": 3,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\",\n    \"checkout_date\": \"2022-01-02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}/api/bookings",
+							"host": [
+								"{{url1}}"
+							],
+							"path": [
+								"api",
+								"bookings"
+							]
+						},
+						"description": "1. Purpose: Creates a new hotel booking.\n    \n2. Parameters:\n    \n    - `Authorization` (string): The authentication token obtained from the login API.\n        \n    - `room_id` (integer): The ID of the room to be booked.\n        \n    - `customer_id` (integer): The ID of the customer making the booking.\n        \n    - `checkin_date` (string): The check-in date for the booking, in the format \"YYYY-MM-DD\".\n        \n    - `checkout_date` (string): The check-out date for the booking, in the format \"YYYY-MM-DD\".\n        \n3. Return:\n    \n    - On success, the API should return a response indicating that the booking was successfully created.\n        \n    - On failure, the API should return an error message with an appropriate HTTP status code (e.g., 400 for bad request, 401 for \"invalid or expired token\", ...)."
+					},
+					"response": [
+						{
+							"name": "bookings_success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "--header 'Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+										"disabled": true
+									},
+									{
+										"key": "room_id",
+										"value": "1,"
+									},
+									{
+										"key": "customer_id",
+										"value": "1,"
+									},
+									{
+										"key": "checkin_date",
+										"value": "2022-01-01,"
+									},
+									{
+										"key": "checkout_date",
+										"value": "2022-01-05"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"room_id\": 1,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\",\n    \"checkout_date\": \"2022-01-05\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url1}}/api/bookings",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 15:12:16 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"message\": \"Booking Room 1 successful!\",\n            \"total_amount\": 400\n        },\n        201\n    ]\n}"
+						},
+						{
+							"name": "bookings_error_no_token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "--header 'Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+										"disabled": true
+									},
+									{
+										"key": "room_id",
+										"value": "1,"
+									},
+									{
+										"key": "customer_id",
+										"value": "1,"
+									},
+									{
+										"key": "checkin_date",
+										"value": "2022-01-01,"
+									},
+									{
+										"key": "checkout_date",
+										"value": "2022-01-05"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"room_id\": 1,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\",\n    \"checkout_date\": \"2022-01-05\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url1}}/api/bookings",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 12:45:21 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"No token provided\"\n        },\n        401\n    ]\n}"
+						},
+						{
+							"name": "bookings_error_miss_param",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "--header 'Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+										"disabled": true
+									},
+									{
+										"key": "room_id",
+										"value": "1,"
+									},
+									{
+										"key": "customer_id",
+										"value": "1,"
+									},
+									{
+										"key": "checkin_date",
+										"value": "2022-01-01,"
+									},
+									{
+										"key": "checkout_date",
+										"value": "2022-01-05"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"room_id\": 1,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url1}}/api/bookings",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 13:58:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Missing required parameter: checkout_date\"\n        },\n        400\n    ]\n}"
+						},
+						{
+							"name": "bookings_error_not_available",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "--header 'Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+										"disabled": true
+									},
+									{
+										"key": "room_id",
+										"value": "1,"
+									},
+									{
+										"key": "customer_id",
+										"value": "1,"
+									},
+									{
+										"key": "checkin_date",
+										"value": "2022-01-01,"
+									},
+									{
+										"key": "checkout_date",
+										"value": "2022-01-05"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"room_id\": 1,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\",\n    \"checkout_date\": \"2022-01-05\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url1}}/api/bookings",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "97"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 15:24:36 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Room 1 is not available for booking\"\n        },\n        400\n    ]\n}"
+						},
+						{
+							"name": "bookings_status_maintenance",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "--header 'Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNn0.M7UOuqYtQ-5ztIBwYB-IzV-A0B74vDGcy14ISrLnUcQ' \\",
+										"disabled": true
+									},
+									{
+										"key": "room_id",
+										"value": "1,"
+									},
+									{
+										"key": "customer_id",
+										"value": "1,"
+									},
+									{
+										"key": "checkin_date",
+										"value": "2022-01-01,"
+									},
+									{
+										"key": "checkout_date",
+										"value": "2022-01-05"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"room_id\": 3,\n    \"customer_id\": 1,\n    \"checkin_date\": \"2022-01-01\",\n    \"checkout_date\": \"2022-01-02\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url1}}/api/bookings",
+									"host": [
+										"{{url1}}"
+									],
+									"path": [
+										"api",
+										"bookings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/2.0.2 Python/3.11.9"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 02 Jun 2024 15:30:04 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": null,\n    \"result\": [\n        {\n            \"error\": \"Room 3 is currently under maintenance\"\n        },\n        400\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "creating_room",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"1\",\n    \"room_type\": \"single\",\n    \"price_per_night\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}/api/creating_room",
+							"host": [
+								"{{url1}}"
+							],
+							"path": [
+								"api",
+								"creating_room"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "#### API for Making a Booking"
+		}
+	]
+}
